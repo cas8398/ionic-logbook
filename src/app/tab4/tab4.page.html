@@ -1,20 +1,23 @@
 <ion-header>
-    <ion-toolbar color="warning">
-      <ion-title>
-        {{capitalizeFirstLetter(categoryName)}}
-      </ion-title>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content padding>
-    <br>
-    <ion-progress-bar *ngIf="loading === true" type="indeterminate"></ion-progress-bar>
+  <ion-toolbar color="warning">
+    <ion-title>
+      Kategori : {{categoryName}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <br>
+  <ion-progress-bar *ngIf="loading === true" type="indeterminate"></ion-progress-bar>
 
-    <ion-card *ngFor="let item of getKeys(thumbs)" (click)="goTo(thumbs.get(item).id)">
-          <ion-img [src]="thumbs.get(item).imageUrl"></ion-img>
-          <ion-card-subtitle style="padding:5px;">
-            {{thumbs.get(item).title}}
-          </ion-card-subtitle>
-    </ion-card>
-    <ion-button *ngIf="loaded === true" (click)="next()">More posts</ion-button>
+  <ion-card *ngFor="let item of getKeys(thumbs)" (click)="goTo(thumbs.get(item).id)">
+        <ion-img [src]="thumbs.get(item).imageUrl"></ion-img>
+        
+  <ion-card-content style="padding:5px;">
+          {{thumbs.get(item).title}}
+        </ion-card-content>
+  </ion-card>
+  <ion-button expand="block" *ngIf="loaded === true" (click)="next()"  >Posting lebih lama</ion-button>
 
-  </ion-content>
+<ion-button hidden id="initoast" (click)="openToast()" expand="block">Show Toast</ion-button>  
+
+</ion-content>
