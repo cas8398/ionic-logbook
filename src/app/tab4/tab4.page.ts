@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {WordpressService} from '../services/wordpress.service';
+import { ToastController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 
@@ -20,7 +21,7 @@ export class Tab4Page implements OnInit {
   loaded: boolean;
   loading: boolean;
 
-  constructor(public wordpressService: WordpressService, private route: ActivatedRoute, private router: Router) {
+  constructor(public wordpressService: WordpressService, private route: ActivatedRoute, private router: Router, public toastCtrl: ToastController) {
   }
 
   getKeys(map){
@@ -52,11 +53,12 @@ export class Tab4Page implements OnInit {
         this.items = data;
         for (let res of data) {
             if(!this.thumbs.has(res.id)){
-              this.thumbs.set(res.id, {id: res.id, imageUrl: "https://icon2.kisspng.com/20180516/vgq/kisspng-wordpress-com-computer-icons-blog-5afbe758a90bf2.5548964515264582006924.jpg", 
+              this.thumbs.set(res.id, {id: res.id, imageUrl: "https://www.pngrepo.com/download/245779/learning-school.png", 
               title: res.title.rendered, content: res.content.rendered});
             }
         }
         this.loading = false;
+          document.getElementById("initoast").click();
         this.loaded = true;
       });
     }
@@ -77,6 +79,14 @@ export class Tab4Page implements OnInit {
     }
   }
 
+  async openToast() {  
+ const toast = await this.toastCtrl.create({  
+      message: 'Berhasil memuat konten',  
+      duration: 2000  
+    });  
+    toast.present();  
+  } 
+  
   next() {
     this.page++;
     this.loadPosts();
