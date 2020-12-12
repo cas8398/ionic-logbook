@@ -10,7 +10,7 @@ export class WordpressService {
 
     constructor(private http: HttpClient) {
         if (this.wp_org == true) {
-            this.mainUrl = "http://logbook.managemen.flagodna.com/wp-json/wp/v2/";
+            this.mainUrl = "https://logbook.managemen.flagodna.com/wp-json/wp/v2";
         }
     }
 
