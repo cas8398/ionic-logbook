@@ -1,24 +1,26 @@
 <ion-header>
   <ion-toolbar color="warning">
     <ion-title>
-      Recent posts
+      Posting Terbaru
     </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
   <br>
  <ion-progress-bar *ngIf="loading === true" type="indeterminate"></ion-progress-bar>
-  <ion-card *ngFor="let item of getKeys(thumbs)">
+ 
+  <ion-card  *ngFor="let item of getKeys(thumbs)" (click)="goTo(thumbs.get(item).id)">
       <ion-card-header>
           <ion-card-title>
             {{thumbs.get(item).title}}
           </ion-card-title>
       </ion-card-header>
     <ion-card-content>
-        <div [innerHTML]="thumbs.get(item).content"></div>
+       <div [innerHTML]="thumbs.get(item).excerpt"></div>
+
     </ion-card-content>
   </ion-card>
-  <ion-button *ngIf="loaded === true" (click)="next()">More posts</ion-button>
+  <ion-button expand="block" *ngIf="loaded === true" (click)="next()"  >Posting lebih lama</ion-button>
 
-  
+  <ion-button hidden id="initoast" (click)="openToast()" expand="block">Show Toast</ion-button>  
 </ion-content>
