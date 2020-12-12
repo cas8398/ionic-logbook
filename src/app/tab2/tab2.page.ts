@@ -29,7 +29,7 @@ export class Tab2Page implements OnInit {
               this.items = data;
               for (let res of data) {
                   if(!this.cats.has(res.id) && res.parent == 0 && res.name !="Uncategorized" && res.count>0){
-                    var image = "https://icon2.kisspng.com/20180516/vgq/kisspng-wordpress-com-computer-icons-blog-5afbe758a90bf2.5548964515264582006924.jpg";
+                    var image = "https://www.pngrepo.com/download/245779/learning-school.png";
                     this.cats.set(res.id, {id: res.id, slug: res.id, post_count: res.count, imageUrl: image, name: res.name});
                   }
               }
@@ -41,7 +41,7 @@ export class Tab2Page implements OnInit {
               this.items = data.categories;
               for (let res of data.categories) {
                   if(!this.cats.has(res.ID) && res.parent == 0 && res.name !="Uncategorized" && res.post_count>0){
-                    var image = "https://icon2.kisspng.com/20180516/vgq/kisspng-wordpress-com-computer-icons-blog-5afbe758a90bf2.5548964515264582006924.jpg";
+                    var image = "https://www.pngrepo.com/download/245779/learning-school.png";
                     switch(res.name){
                     case "Ëmbëlsira": image = "https://unegatuaj960568913.files.wordpress.com/2019/02/cake.png?resize=160%2C160"; break;
                     case "Receta për fëmijë": image = "https://unegatuaj960568913.files.wordpress.com/2019/02/gingerbread.png?resize=160%2C160"; break;
